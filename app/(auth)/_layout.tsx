@@ -3,9 +3,6 @@ import React from "react";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
-// TODO: 1:30:00
-// https://www.youtube.com/watch?v=ZBCUegTZF7M&ab_channel=JavaScriptMastery
-
 const AuthLayout = () => {
   return (
     <>

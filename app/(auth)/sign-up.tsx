@@ -1,12 +1,13 @@
 import React from "react";
 
-import { ScrollView, Text, View, Image } from "react-native";
+import { ScrollView, Text, View, Image, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "../../constants";
 import FormField from "@/components/FormField";
 import CustomButton from "@/components/CustomButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { createUser } from "@/lib/appwrite";
 
 const SignUp = () => {
   const [form, setForm] = React.useState({
@@ -17,9 +18,21 @@ const SignUp = () => {
 
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  const submit = () => {
+  const submit = async () => {
+    if (!form.username || !form.email || !form.password) {
+      Alert.alert("Error", "Please fill in all fields");
+    }
     setIsSubmitting(true);
-    alert("Submitted");
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      // TODO set it to global state...
+
+      router.replace("/home");
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -61,10 +74,10 @@ const SignUp = () => {
           />
 
           <CustomButton
-            title="Sign In"
+            title="Sign Up"
             handlePress={submit}
             containerStyles="mt-7"
-            isLoading={isSubmitting}
+            isLoading={form.password.length < 8 || isSubmitting}
           />
 
           <View className="justify-center pt-5 flex-row gap-2">

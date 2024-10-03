@@ -6,6 +6,11 @@ import { images } from "../constants";
 import CustomButton from "@/components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 
+// TODO: 1:56:00
+// https://www.youtube.com/watch?v=ZBCUegTZF7M&ab_channel=JavaScriptMastery
+
+//  AppWrite package name: com.devthomas.aora
+
 import { Redirect, router } from "expo-router";
 
 export default function App() {
