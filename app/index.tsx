@@ -6,14 +6,19 @@ import { images } from "../constants";
 import CustomButton from "@/components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 
-// TODO: 1:56:00
+// TODO: 2:09:00
 // https://www.youtube.com/watch?v=ZBCUegTZF7M&ab_channel=JavaScriptMastery
 
 //  AppWrite package name: com.devthomas.aora
 
+import { useGlobalContext } from "../context/GlobalProvider";
 import { Redirect, router } from "expo-router";
 
 export default function App() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView
