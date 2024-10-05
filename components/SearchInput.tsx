@@ -1,10 +1,9 @@
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, TextInput, TouchableOpacity, View } from "react-native";
 
 import { icons } from "../constants";
 import { useState } from "react";
 
 interface FormFieldProps {
-  // title: string;
   value: string;
   placeholder?: string;
   handleChangeText: (text: string) => void;
@@ -13,7 +12,6 @@ interface FormFieldProps {
 }
 
 const SearchInput = ({
-  // title,
   value,
   placeholder,
   handleChangeText,
@@ -30,7 +28,6 @@ const SearchInput = ({
         placeholder="Search for a video topic"
         placeholderTextColor="#7b7b8b"
         onChangeText={handleChangeText}
-        // secureTextEntry={title === "Password" && !showPassword}
       />
 
       <TouchableOpacity>

@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-import {
-  FlatList,
-  Text,
-  View,
-  Image,
-  RefreshControl,
-  Alert,
-} from "react-native";
+import { FlatList, Text, View, Image, RefreshControl } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { images } from "@/constants";
 import SearchInput from "@/components/SearchInput";
 import Trending from "@/components/Trending";
 import EmptyState from "@/components/EmptyState";
-import { getAllPosts } from "@/lib/appwrite";
+import { getAllPosts, getLatestPosts } from "@/lib/appwrite";
 import useAppwrite from "@/lib/useAppwrite";
 import VideoCard from "@/components/VideoCard";
 import { Models } from "react-native-appwrite";
@@ -26,6 +19,8 @@ const Home = () => {
     refetch,
   } = useAppwrite<Models.Document[]>(getAllPosts);
 
+  const { data: latestPosts } = useAppwrite<Models.Document[]>(getLatestPosts);
+
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
@@ -34,7 +29,7 @@ const Home = () => {
     setRefreshing(false);
   };
 
-  console.log("posts", posts);
+  // console.log("posts", posts);
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -70,7 +65,7 @@ const Home = () => {
               <Text className="text-gray-100 text-lg font-pregular mb-3">
                 Latest Videos
               </Text>
-              <Trending posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
+              <Trending posts={latestPosts ?? []} />
             </View>
           </View>
         )}

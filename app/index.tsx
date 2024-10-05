@@ -6,7 +6,7 @@ import { images } from "../constants";
 import CustomButton from "@/components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 
-// TODO: 2:48:00
+// TODO: 3:06:00
 // https://www.youtube.com/watch?v=ZBCUegTZF7M&ab_channel=JavaScriptMastery
 
 //  AppWrite package name: com.devthomas.aora

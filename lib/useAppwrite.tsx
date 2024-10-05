@@ -18,7 +18,6 @@ const useAppwrite = <T,>(fn: FetchFunction<T>): UseAppwriteReturn<T> => {
     setLoading(true);
     try {
       const response = await fn();
-      console.log("repsonse from getAllPosts useEffect", response);
       setData(response);
     } catch (error: any) {
       Alert.alert("Error", error.message);
@@ -34,7 +33,7 @@ const useAppwrite = <T,>(fn: FetchFunction<T>): UseAppwriteReturn<T> => {
 
   const refetch = async () => fetchData();
 
-  console.log("posts data", data);
+  // console.log("posts data", data);
 
   return { data, refetch, loading };
 };

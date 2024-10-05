@@ -37,7 +37,7 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
       .then((response: Models.Document) => {
         if (response) {
           setUser(response);
-          console.log("response", response);
+          // console.log("response", response);
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
