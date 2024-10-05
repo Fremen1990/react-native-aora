@@ -10,7 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 
-lib/appwrite.ts
+appwriteConfig.ts
 
 # macOS
 .DS_Store
