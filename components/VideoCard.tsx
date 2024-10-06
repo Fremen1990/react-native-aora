@@ -5,24 +5,20 @@ import { Text, View, Image, TouchableOpacity } from "react-native";
 import { icons } from "../constants";
 import { ResizeMode, Video } from "expo-av";
 
-interface Users {
+interface VideoCardProps {
+  title: string;
+  thumbnail: string;
+  video: string;
   username: string;
   avatar: string;
 }
 
-interface VideoType {
-  title: string;
-  thumbnail: string;
-  video: string;
-  users: Users;
-}
-
-interface VideoCardProps {
-  video: VideoType;
-}
-
 const VideoCard = ({
-  video: { title, thumbnail, video, users },
+  title,
+  thumbnail,
+  video,
+  username,
+  avatar,
 }: VideoCardProps) => {
   // console.log("Video", video.users.username);
 
@@ -34,7 +30,7 @@ const VideoCard = ({
         <View className="justify-center items-center flex-row flex-1">
           <View className="w-[46px] h-[46px] rounded-lg border border-secondary justify-center items-center p-0.5">
             <Image
-              source={{ uri: users.avatar }}
+              source={{ uri: avatar }}
               className="w-full h-full rounded-lg"
               resizeMode="cover"
             />
@@ -52,7 +48,7 @@ const VideoCard = ({
               className="text-sx text-gray-100 font-pregular"
               numberOfLines={1}
             >
-              {users.username}
+              {username}
             </Text>
           </View>
           <View className="pt-2">
